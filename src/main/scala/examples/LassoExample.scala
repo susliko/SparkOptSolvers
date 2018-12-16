@@ -21,7 +21,7 @@ object LassoExample extends App{
   val n = 10
   val k = 20
   val x = new RowMatrix(sc.parallelize(for (_ <- 0 until k) yield {
-    Vectors.dense((for (_ <- 0 until n) yield 2*Random.nextDouble() - 1).toArray)
+    Vectors.dense((for (_ <- 0 until n) yield (2*Random.nextDouble() - 1)*Random.nextInt(k / 5)).toArray)
   }))
   val realBeta = Vectors.dense((for (_ <- 0 until k) yield 2*Random.nextDouble() - 1).toArray)
   val y = x.dotVector(realBeta)
